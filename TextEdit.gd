@@ -5,16 +5,24 @@ extends TextEdit
 # var a = 2
 # var b = "text"
 
+var _timer = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.text = loadFile();
+	_timer = Timer.new()
+	add_child(_timer)
+	
+	_timer.connect("timeout", self, "_on_Timer_timeout")
+	_timer.set_wait_time(10.0)
+	_timer.set_one_shot(false) # Make sure it loops
+	_timer.start()
+	self.text = loadFile()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-#	pass
-	saveFile(self.text);
+	pass
+	
 
 
 func saveFile(content):
@@ -29,3 +37,7 @@ func loadFile():
 	var content = file.get_as_text()
 	file.close()
 	return content
+	
+func _on_Timer_timeout():
+	print('!!!')
+	saveFile(self.text)
