@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://TextEdit.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_right = 1026.0
+margin_bottom = 600.0
+rect_scale = Vector2( 0.996079, 1.00141 )
+highlight_current_line = true
+syntax_highlighting = true
+show_line_numbers = true
+fold_gutter = true
+minimap_draw = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
